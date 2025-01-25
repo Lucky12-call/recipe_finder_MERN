@@ -76,10 +76,9 @@ const userLogout = (_, res) => {
       secure: process.env.NODE_ENV === "production",
     };
 
-    res
-      .status(200)
-      .cookie("token", "", options)
-      .json({ message: "User Logged Out!", success: true });
+    localStorage.removeItem("authToken");
+
+    res.status(200).json({ message: "User Logged Out!", success: true });
   } catch (error) {
     console.error("Error in logout controller", error.message);
     res.status(500).json({ message: "Internal Server Error" });
