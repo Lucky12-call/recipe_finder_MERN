@@ -72,7 +72,7 @@ const userLogout = (_, res) => {
     const options = {
       expires: new Date(Date.now()), // Set cookie to expire immediately
       httpOnly: true,
-      sameSite: "strict",
+      sameSite: "none",
       secure: process.env.NODE_ENV === "production",
     };
 

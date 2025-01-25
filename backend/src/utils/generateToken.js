@@ -9,7 +9,7 @@ export const sendToken = (user, res, message) => {
   const options = {
     expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days
     httpOnly: true,
-    sameSite: "strict", // Necessary for cross-origin requests
+    sameSite: "none", // Necessary for cross-origin requests
     secure: process.env.NODE_ENV === "production", // Only secure in production
   };
 
