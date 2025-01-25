@@ -19,7 +19,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/api/user/logout",
+        "https://recipe-finder-mern.vercel.app/api/user/logout",
         {},
         { withCredentials: true }
       );

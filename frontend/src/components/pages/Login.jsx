@@ -23,7 +23,7 @@ const Login = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/api/user/login",
+        "https://recipe-finder-mern.vercel.app/api/user/login",
         formData,
         { withCredentials: true }
       );
