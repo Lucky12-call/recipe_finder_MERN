@@ -69,14 +69,12 @@ const userLogin = async (req, res) => {
 // user logout
 const userLogout = (_, res) => {
   try {
-    const options = {
-      expires: new Date(Date.now()), // Set cookie to expire immediately
-      httpOnly: true,
-      sameSite: "none",
-      secure: process.env.NODE_ENV === "production",
-    };
-
-    localStorage.removeItem("authToken");
+    // const options = {
+    //   expires: new Date(Date.now()), // Set cookie to expire immediately
+    //   httpOnly: true,
+    //   sameSite: "none",
+    //   secure: process.env.NODE_ENV === "production",
+    // };
 
     res.status(200).json({ message: "User Logged Out!", success: true });
   } catch (error) {

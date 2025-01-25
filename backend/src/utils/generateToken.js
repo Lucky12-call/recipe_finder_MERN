@@ -13,8 +13,6 @@ export const sendToken = (user, res, message) => {
   //   secure: process.env.NODE_ENV === "production", // Only secure in production
   // };
 
-  localStorage.setItem("authToken", token);
-
   res.status(200).json({
     success: true,
     message,
