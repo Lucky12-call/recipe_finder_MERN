@@ -69,16 +69,16 @@ const userLogin = async (req, res) => {
 // user logout
 const userLogout = (_, res) => {
   try {
-    const options = {
-      expires: new Date(Date.now()), // Set cookie to expire immediately
-      httpOnly: true,
-      sameSite: "none",
-      secure: process.env.NODE_ENV === "production",
-    };
+    // const options = {
+    //   expires: new Date(Date.now()), // Set cookie to expire immediately
+    //   httpOnly: true,
+    //   sameSite: "none",
+    //   secure: process.env.NODE_ENV === "production",
+    // };
 
     res
       .status(200)
-      .cookie("token", "", options)
+      .cookie("token", "", { maxAge: 0 })
       .json({ message: "User Logged Out!", success: true });
   } catch (error) {
     console.error("Error in logout controller", error.message);
