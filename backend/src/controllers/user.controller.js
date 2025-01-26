@@ -78,7 +78,7 @@ const userLogout = (_, res) => {
 
     res
       .status(200)
-      .clearCookie("token", "", options)
+      .cookie("token", "", options)
       .json({ message: "User Logged Out!", success: true });
   } catch (error) {
     console.error("Error in logout controller", error.message);
