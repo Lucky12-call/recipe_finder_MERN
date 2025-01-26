@@ -30,8 +30,6 @@ const SignUp = () => {
       );
       dispatch(setCurrentUser(data.user));
 
-      localStorage.setItem("authToken", data.token);
-
       if (data.success) {
         dispatch(setIsLoggedIn(true));
       }

@@ -25,7 +25,6 @@ const Navbar = () => {
       );
       if (data.success) {
         dispatch(setIsLoggedIn(false));
-        localStorage.removeItem("authToken");
       }
       toast.success(data.message);
     } catch (error) {

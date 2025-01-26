@@ -69,14 +69,17 @@ const userLogin = async (req, res) => {
 // user logout
 const userLogout = (_, res) => {
   try {
-    // const options = {
-    //   expires: new Date(Date.now()), // Set cookie to expire immediately
-    //   httpOnly: true,
-    //   sameSite: "none",
-    //   secure: process.env.NODE_ENV === "production",
-    // };
+    const options = {
+      expires: new Date(Date.now()), // Set cookie to expire immediately
+      httpOnly: true,
+      sameSite: "none",
+      secure: process.env.NODE_ENV === "production",
+    };
 
-    res.status(200).json({ message: "User Logged Out!", success: true });
+    res
+      .status(200)
+      .clearCookie("token", "", options)
+      .json({ message: "User Logged Out!", success: true });
   } catch (error) {
     console.error("Error in logout controller", error.message);
     res.status(500).json({ message: "Internal Server Error" });
