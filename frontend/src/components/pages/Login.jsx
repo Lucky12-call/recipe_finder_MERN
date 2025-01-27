@@ -20,10 +20,11 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // https://recipe-finder-mern.vercel.app/api/user/login
 
     try {
       const { data } = await axios.post(
-        "https://recipe-finder-mern.vercel.app/api/user/login",
+        "http://localhost:3000/api/user/login",
         formData,
         { withCredentials: true }
       );
