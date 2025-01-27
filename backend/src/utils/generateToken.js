@@ -9,7 +9,7 @@ export const sendToken = (user, res, message) => {
   const options = {
     maxAge: 7 * 24 * 60 * 60 * 1000,
     httpOnly: true,
-    sameSite: "Strict", // Necessary for cross-origin requests
+    sameSite: "none", // Necessary for cross-origin requests
     secure: process.env.NODE_ENV === "production", // Only secure in production
   };
 

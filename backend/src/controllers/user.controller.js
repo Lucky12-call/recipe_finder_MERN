@@ -69,13 +69,6 @@ const userLogin = async (req, res) => {
 // user logout
 const userLogout = (_, res) => {
   try {
-    const options = {
-      maxAge: new Date(Date.now()), // Set cookie to expire immediately
-      httpOnly: true,
-      sameSite: "Strict",
-      secure: process.env.NODE_ENV === "production",
-    };
-
     res
       .status(200)
       .clearCookie("token")
