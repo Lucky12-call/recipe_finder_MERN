@@ -3,34 +3,20 @@ import { HiMiniBarsArrowDown, HiMiniBarsArrowUp } from "react-icons/hi2";
 import SearchRecipe from "../search/SearchRecipe";
 import { Link } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
-import toast from "react-hot-toast";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsLoggedIn } from "../slices/mealSlice";
+import { setIsLoggedIn, setToken } from "../slices/mealSlice";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState("");
 
   const currentUser = useSelector((state) => state.meals.currentUser);
-
   const dispatch = useDispatch();
 
-  const handleLogout = async () => {
-    try {
-      const { data } = await axios.post(
-        "https://recipe-finder-mern.vercel.app/api/user/logout",
-        {},
-        { withCredentials: true }
-      );
-      if (data.success) {
-        dispatch(setIsLoggedIn(false));
-      }
-      toast.success(data.message);
-    } catch (error) {
-      dispatch(setIsLoggedIn(true));
-      toast.error(error.response.data.message);
-    }
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    dispatch(setToken(""));
+    dispatch(setIsLoggedIn(false));
   };
 
   return (

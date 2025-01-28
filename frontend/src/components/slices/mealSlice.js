@@ -6,6 +6,7 @@ const initialState = {
   letter: "",
   isLoggedIn: false,
   currentUser: {},
+  token: "",
 };
 
 const mealSlice = createSlice({
@@ -27,6 +28,9 @@ const mealSlice = createSlice({
     setCurrentUser: (state, action) => {
       state.currentUser = action.payload;
     },
+    setToken: (state, action) => {
+      state.token = action.payload;
+    },
   },
 });
 
@@ -36,5 +40,6 @@ export const {
   setLetter,
   setIsLoggedIn,
   setCurrentUser,
+  setToken,
 } = mealSlice.actions;
 export default mealSlice.reducer;

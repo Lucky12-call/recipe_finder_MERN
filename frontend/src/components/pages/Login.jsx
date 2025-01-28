@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { setCurrentUser, setIsLoggedIn } from "../slices/mealSlice";
-import { useDispatch } from "react-redux";
+import { setCurrentUser, setIsLoggedIn, setToken } from "../slices/mealSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +11,7 @@ const Login = () => {
     password: "",
   });
 
+  const token = useSelector((state) => state.meals.token);
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -25,12 +26,14 @@ const Login = () => {
       const { data } = await axios.post(
         "https://recipe-finder-mern.vercel.app/api/user/login",
         formData,
-        { withCredentials: true }
+        { headers: { Authorization: `Bearer ${token}` } }
       );
       dispatch(setCurrentUser(data.user));
 
       if (data.success) {
         dispatch(setIsLoggedIn(true));
+        dispatch(setToken(data.token));
+        localStorage.setItem("token", data.token);
       }
       toast.success(data.message);
     } catch (error) {

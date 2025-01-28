@@ -66,17 +66,4 @@ const userLogin = async (req, res) => {
   }
 };
 
-// user logout
-const userLogout = (_, res) => {
-  try {
-    res
-      .status(200)
-      .clearCookie("token")
-      .json({ message: "User Logged Out!", success: true });
-  } catch (error) {
-    console.error("Error in logout controller", error.message);
-    res.status(500).json({ message: "Internal Server Error" });
-  }
-};
-
-export { userSignUp, userLogin, userLogout };
+export { userSignUp, userLogin };
